@@ -22,29 +22,23 @@
                                         </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="name" class="col-sm-2 col-form-label">Stok</label> 
-                                        <div class="col-sm-10">
-                                        <input type="number" class="form-control" id="nama_obat"  name="stok" value="<?= $edit['stok']; ?>">
-                                        <!-- <?= form_error('stok', '<small class="text-danger pl-3">', '</small>'); ?> -->
-                                        </div>
-                                </div>
-                                <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">Kategori</label> 
                                         <div class="col-sm-10">
                                         <input type="text" class="form-control" id="nama_obat"  name="kategori" value="<?= $edit['kategori']; ?>">
-                                        <!-- <?= form_error('kategori', '<small class="text-danger pl-3">', '</small>'); ?> -->
+                                        <?= form_error('kategori', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">Deskripsi</label> 
                                         <div class="col-sm-10">
                                         <input type="text" class="form-control" id="nama_obat"  name="deskripsi" value="<?= $edit['deskripsi']; ?>">
-                                        <!-- <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?> -->
+                                        <?= form_error('deskripsi', '<small class="text-danger pl-3">', '</small>'); ?>
                                         </div>
                                 </div>
                                 
                                 <div class="form-group row justify-content-end">
                                     <div class="col-sm-10">
+                                    <a href="<?= base_url('master/obat/kembali'); ?>" class="btn btn-primary">Kembali</a>
                                     <button type="submit" class="btn btn-primary">Edit</button>
                                     </div>
                                 </div>

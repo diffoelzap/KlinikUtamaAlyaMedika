@@ -6,8 +6,8 @@
                     <!-- Page Heading -->
                      <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800"><?= $title; ?></h1>
-                        <!-- <a href="<?= base_url('master/obat/tambah')?>" class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i
-                                class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a> -->
+                        <a href="<?= base_url('stok/obat/tambah')?>" class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i
+                                class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
                     </div>
 
                     <?php 
@@ -56,9 +56,9 @@
                                             <td><?= $r['deskripsi']; ?></td>
                                             <td>
                                                 <center>
-                                                <a href="<?= base_url('master/obat/info/'). $r['id'] ; ?>" class="btn btn-info btn-circle"><i class="fas fa-info-circle"></i></a>
-                                                <!-- <a href="<?= base_url('master/obat/edit/'). $r['id'] ; ?>" class="btn btn-warning btn-circle"><i class="fas fa-edit"></i></a> -->
-                                                <!-- <a href="#" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#delete<?= $r['id'];?>"><i class="fas fa-trash"></i></a> -->
+                                                <a href="<?= base_url('stok/obat/info/'). $r['id'] ; ?>" class="btn btn-info btn-circle"><i class="fas fa-info-circle"></i></a>
+                                                <a href="<?= base_url('stok/obat/edit/'). $r['id'] ; ?>" class="btn btn-warning btn-circle"><i class="fas fa-edit"></i></a>
+                                                <a href="#" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#delete<?= $r['id'];?>"><i class="fas fa-trash"></i></a>
                                                </center>
                                             </td>
                                             <!-- <a href="" class="badge badge-warning">Access</a>
@@ -91,7 +91,7 @@
         <span aria-hidden="true">&times;</span>
          </button>
       </div>
-      <form action="<?= base_url('master/obat/delete/'.$r['id']); ?>" method="post">
+      <form action="<?= base_url('stok/obat/delete/'.$r['id']); ?>" method="post">
       <div class="modal-body">
          <h6>Apakah Anda Yakin Menghapus data ini ?</h6>
       </div>

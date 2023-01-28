@@ -6,15 +6,15 @@
                     <!-- Page Heading -->
                      <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800"><?= $title; ?></h1>
-                        <!-- <a href="<?= base_url('master/obat/tambah')?>" class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i
+                        <!-- <a href="<?= base_url('stok/obat/tambah')?>" class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i
                                 class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a> -->
                     </div>
 
                     <?php 
-                       if ($this->session->flashdata('massage')) 
+                       if ($this->session->flashdata('success')) 
                        {
                             echo ' <div class="alert alert-success alert-dismissible" role="alert">
-                            <strong>Sukses! </strong>'.$this->session->flashdata('massage');
+                            <strong>Sukses! </strong>'.$this->session->flashdata('success');
                             echo '</div>';
                        }else if ($this->session->flashdata('massage_edit')) 
                        {
@@ -41,8 +41,8 @@
                                             <th>Nama Obat</th>
                                             <th>Stok</th>
                                             <th>Kategori</th>
-                                            <th>Deskripsi</th>
-                                            <th>Aksi</th>
+                                            <th>Tanggal Expired</th>
+                                            <!-- <th>Aksi</th> -->
                                         </tr>
                                     </thead>
                                     <?php $i =1; ?>
@@ -53,14 +53,14 @@
                                             <td><?= $r['nama_obat']; ?></td>
                                             <td><?= $r['stok']; ?></td>
                                             <td><?= $r['kategori']; ?></td>
-                                            <td><?= $r['deskripsi']; ?></td>
-                                            <td>
+                                            <td><?= $r['tanggal_expired']; ?></td>
+                                            <!-- <td>
                                                 <center>
-                                                <a href="<?= base_url('master/obat/info/'). $r['id'] ; ?>" class="btn btn-info btn-circle"><i class="fas fa-info-circle"></i></a>
-                                                <!-- <a href="<?= base_url('master/obat/edit/'). $r['id'] ; ?>" class="btn btn-warning btn-circle"><i class="fas fa-edit"></i></a> -->
+                                                <!-- <a href="<?= base_url('stok/obat/info/'). $r['id'] ; ?>" class="btn btn-info btn-circle"><i class="fas fa-info-circle"></i></a> -->
+                                                <a href="<?= base_url('stok/kadaluarsa/edit/'). $r['id'] ; ?>" class="btn btn-danger">Keluarkan</a>
                                                 <!-- <a href="#" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#delete<?= $r['id'];?>"><i class="fas fa-trash"></i></a> -->
                                                </center>
-                                            </td>
+                                            </td> -->
                                             <!-- <a href="" class="badge badge-warning">Access</a>
                                             <a href="" class="badge badge-success">Edit</a>
                                             <a href="" class="badge badge-danger">Delete</a> -->
@@ -73,14 +73,8 @@
                         </div>
                     </div>
 
-                </div>
-                <!-- /.container-fluid -->
-
-            </div>
-            <!-- End of Main Content -->
-
             <!-- Modal -->
-<?php
+<!-- <?php
   foreach ($obat as $r) : ?>
 <div class="modal fade" id="delete<?= $r['id'];?>">
   <div class="modal-dialog modal-lg">
@@ -91,7 +85,7 @@
         <span aria-hidden="true">&times;</span>
          </button>
       </div>
-      <form action="<?= base_url('master/obat/delete/'.$r['id']); ?>" method="post">
+      <form action="<?= base_url('stok/obat/delete/'.$r['id']); ?>" method="post">
       <div class="modal-body">
          <h6>Apakah Anda Yakin Menghapus data ini ?</h6>
       </div>
@@ -104,5 +98,5 @@
   </div>
 </div>
 
-<?php endforeach; ?>
+<?php endforeach; ?> -->
             
