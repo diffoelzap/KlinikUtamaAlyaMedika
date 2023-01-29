@@ -28,44 +28,26 @@
                                         <div class="form-group row">
                                             <label for="email" class="col-sm-3 col-form-label">Kode Inap</label> 
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="kode_obat"  name="kode_rawat_inap" value="<?= $detail_inap['kode_rawat_inap']?>" readonly> 
+                                                    <input type="text" class="form-control" id="kode_obat"  name="kode_rawat_jalan" value="<?= $detail_jalan['kode_rawat_jalan']?>" readonly> 
                                                 </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="email" class="col-sm-3 col-form-label">Nama Pasien</label> 
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="kode_obat"  name="nama_pasien" value="<?= $detail_inap['nama_pasien']?>" readonly> 
+                                                    <input type="text" class="form-control" id="kode_obat"  name="nama_pasien" value="<?= $detail_jalan['nama_pasien']?>" readonly> 
                                                 </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="email" class="col-sm-3 col-form-label">Nama Dokter</label> 
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="kode_obat"  name="nama_dokter" value="<?= $detail_inap['nama_dokter']?>" readonly> 
+                                                    <input type="text" class="form-control" id="kode_obat"  name="nama_dokter" value="<?= $detail_jalan['nama_dokter']?>" readonly> 
                                                 </div>
                                         </div>
+                                        <?php if($detail_jalan['active'] == 1) {?>
                                         <div class="form-group row">
-                                            <label for="email" class="col-sm-3 col-form-label">Tipe Kamar</label> 
+                                            <label for="email" class="col-sm-3 col-form-label">Tanggal Rawat</label> 
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="kode_obat"  name="tipe_kamar" value="<?= $detail_inap['tipe_kamar']?> | <?= $detail_inap['nama_kamar']?>" readonly> 
-                                                </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="email" class="col-sm-3 col-form-label">Tanggal Masuk</label> 
-                                                <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="kode_obat"  name="tanggal_masuk" value="<?= $detail_inap['tanggal_masuk']?>" readonly> 
-                                                </div>
-                                        </div>
-                                        <?php
-                                            $tanggal_sekarang = date('Y-m-d');
-                                            $tanggal_masuk = $detail_inap['tanggal_masuk'];
-                                            $query = $this->db->query("SELECT DATEDIFF('$tanggal_sekarang','$tanggal_masuk') as selisih")->row_array();
-                                            $selisih = $query['selisih'] + 1;
-                                        ?>
-                                        <?php if($detail_inap['active'] == 1) {?>
-                                        <div class="form-group row">
-                                            <label for="email" class="col-sm-3 col-form-label">Lama Menginap</label> 
-                                                <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="kode_obat"  name="selisih" value="<?= $selisih?>" readonly> 
+                                                    <input type="text" class="form-control" id="kode_obat"  name="tanggal_rawat" value="<?= $detail_jalan['tanggal_rawat']?>" readonly> 
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#addTindakan">Tambah Tindakan</a>
@@ -73,11 +55,11 @@
                                         </div>
                                         <?php } else { ?>
                                             <div class="form-group row">
-                                            <label for="email" class="col-sm-3 col-form-label">Lama Menginap</label> 
+                                            <label for="email" class="col-sm-3 col-form-label">Tanggal Rawat</label> 
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" id="kode_obat"  name="selisih" value="<?= $detail_inap['lama_menginap']?>" readonly> 
+                                                    <input type="text" class="form-control" id="kode_obat"  name="tanggal_rawat" value="<?= $detail_jalan['tanggal_rawat']?>" readonly> 
                                                 </div>
-                                             </div>
+                                        </div>
                                         <?php } ?>
                                     </div>
                                     
@@ -98,14 +80,7 @@
                                                 }else{
                                                     echo number_format($total_harga['total']);
                                                 }
-                                            ?> <br>
-                                            Harga Kamar * per Hari (<?= $selisih ?>) = Rp. 
-                                            <?php 
-                                                $total_kamar = $selisih * $total_harga['harga_kamar'];
-                                                $total_keseluruhan = $total_kamar + $total_harga['total'];
-                                                echo number_format($total_kamar);
-                                            ?>  <br>
-                                            Harga Total Keseluruhan = <b>Rp. <?= number_format($total_keseluruhan) ?></b>
+                                            ?>
                                         </div>
                                 </div> 
                         </div>
@@ -127,7 +102,7 @@
                                             <th>Nama Tindakan</th>
                                             <th>Nama Obat</th>
                                             <th>Harga Per Tindakan</th>
-                                            <?php if($detail_inap['active'] == 1) {?>
+                                            <?php if($detail_jalan['active'] == 1) {?>
                                                 <th>Aksi</th>
                                             <?php } ?>
                                         </tr>
@@ -140,7 +115,7 @@
                                             <td><?= $r['nama_tindakan']; ?></td>
                                             <td><?= $r['nama_obat']; ?></td>
                                             <td><?= number_format($r['harga_tindakan']); ?> + hargaObat = (<?= number_format($r['harga_tindakan'] + $r['harga']); ?>)</td>
-                                            <?php if($detail_inap['active'] == 1) {?>
+                                            <?php if($detail_jalan['active'] == 1) {?>
                                             <td><a href="#" class="btn btn-danger btn-circle" data-toggle="modal" data-target="#delete<?= $r['id'];?>"><i class="fas fa-trash"></i></a></td>
                                             <?php } ?>
                                             <!-- <a href="" class="badge badge-warning">Access</a>
@@ -154,7 +129,12 @@
                             </div>
                         </div>
                     </div>    
-                    
+                    <?php if($detail_jalan['active'] == 1){?>
+                    <div class="col-sm-4">
+                        <a href="<?= base_url('transaksi/rawatjalan/rawat_selesai/'). $detail_jalan['kode_rawat_jalan'] ;?>" class="btn btn-primary">Selesai Perawatan</a>
+                    </div>
+                    <?php } ?>
+
                 </div>
         </div>
 
@@ -167,11 +147,11 @@
         <span aria-hidden="true">&times;</span>
          </button>
       </div>
-      <form action="<?= base_url('transaksi/rawatinap/tambah_tindakan') ?>" method="post">
+      <form action="<?= base_url('transaksi/rawatjalan/tambah_tindakan') ?>" method="post">
       <div class="modal-body">
             <div class="form-group row">
                     <div class="col-sm-6">
-                    <input type="text" class="form-control" id="nama_kamar"  name="kode_rawat" value="<?= $detail_inap['kode_rawat_inap']?>" hidden>
+                    <input type="text" class="form-control" id="nama_kamar"  name="kode_rawat" value="<?= $detail_jalan['kode_rawat_jalan']?>" hidden>
                     <!-- <?= form_error('jumlah', '<small class="text-danger pl-3">', '</small>'); ?> -->
                 </div>
             </div>
@@ -225,7 +205,7 @@
         <span aria-hidden="true">&times;</span>
          </button>
       </div>
-      <form action="<?= base_url('transaksi/rawatinap/delete/'.$r['id'].'/'.$r['kode_rawat']); ?>" method="post">
+      <form action="<?= base_url('transaksi/rawatjalan/delete/'.$r['id'].'/'.$r['kode_rawat']); ?>" method="post">
       <div class="modal-body">
          <h6>Apakah Anda Yakin Menghapus data ini ?</h6>
       </div>

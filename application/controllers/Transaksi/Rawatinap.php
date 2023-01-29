@@ -8,6 +8,7 @@ class Rawatinap extends CI_Controller
         parent::__construct();
         is_logged_in();
     }
+    
     public function index()
     {
         $data['title'] = 'Rawat Inap';
@@ -32,12 +33,6 @@ class Rawatinap extends CI_Controller
         $data['title'] = 'Rawat Inap';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
-        
-        // $kodeObat = $huruf . sprintf("%03s", $urutan);
-        // $namaObat = $this->input->post('nama_obat');
-        // $stok = $this->input->post('stok');
-        // $kategori = $this->input->post('kategori');
-        // $deskripsi = $this->input->post('deskripsi');
         $jumlahKamar = $this->db->get_where('masterdata_kamar',['id' => $this->input->post('id_kamar')])->row_array();
         $arraydata = [
             'kode_rawat_inap' =>  $this->input->post('kode_rawat_inap'),
